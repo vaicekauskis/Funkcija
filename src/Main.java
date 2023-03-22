@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
@@ -38,6 +41,22 @@ public class Main {
         int number = 12;
        integers(number);
         System.out.println(integers(number));
+
+        System.out.println("---------------------4 sunkus-----------------");
+
+        int[] arr3 = {8,4,5,9,100,3,6,128,7,2,1};
+        System.out.println("halooooooooo");
+        int[] sortedArray = sortTheArray(arr3);
+        for (int i = 0; i < sortedArray.length; i++) {
+            System.out.print(sortedArray[i] + " ");
+        }
+
+
+        System.out.println("-------------- 5 sunkus------------");
+
+        int[] rndArr = generateRndInArr(100 ,333,777);
+        countPrimeNumInArr(rndArr);
+        System.out.println(countPrimeNumInArr(rndArr));
 
 
 
@@ -81,6 +100,14 @@ public class Main {
         int[] arr2 = new int[5];
         for (int i = 0; i < arr2.length; i++) {
             arr2[i] = min + (int) (Math.random() * (max - min + 1));
+
+        }
+        return arr2;
+    }
+    public static int[] generateRndInArr(int length  ,int min, int max) {
+        int[] arr2 = new int[length];
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = min + (int) (Math.random() * (max - min ));
 
         }
         return arr2;
@@ -165,21 +192,54 @@ public class Main {
     // Jei tai skaičius apgaubkite “ [ 7 ]”. Jei skaičiai eina keli iš eilės, apgaubkite juos kartu. [75].
 
 
-//  sunki 3   Parašykite funkciją, kuri skaičiuotų, ir gražintų iš kiek sveikų skaičių jos argumentas dalijasi
+//   3 sunkus   Parašykite funkciją, kuri skaičiuotų, ir gražintų iš kiek sveikų skaičių jos argumentas dalijasi
 //    be liekanos (išskyrus vienetą ir patį save).
 
     public static int integers(int Number) {
         int count = 0;
-        for (int i = 2; i < Number; i++) {
+        for (int i = 2; i < Number/2; i++) {  //Porinis skaicius kita pusre buna blogi masyvo optimizavimas ( /2 )
             if (Number % i == 0) {
                 count++;
             }
         }
-        return Number;
+        return count;
     }
 
-//Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77.
+//4 sunkus Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77.
 // Išrūšiuokite masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami trečio uždavinio funkciją.
+
+    public static int[] sortTheArray (int[] arr3){
+        for (int i = 0; i < arr3.length; i++) {
+            for (int j = 0; j < arr3.length; j++) {
+                if (integers(arr3[i]) > integers(arr3[j])) {
+                    int temp = arr3[i];
+                    arr3[i] = arr3[j];
+                    arr3[j] = temp ;
+
+                }
+            }
+        }
+        return arr3;
+    }
+
+
+
+
+
+// 5 sunkus  Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777.
+// Naudodami 3 uždavinio funkciją iš masyvo suskaičiuokite kiek yra pirminių skaičių.
+
+    public static int countPrimeNumInArr (int[] num){
+
+        int primeNu = 0;
+        for (int i = 0; i <num.length; i++) {
+            if (integers(num[i]) == 0) {
+                primeNu++;
+            }
+
+        }
+        return primeNu;
+    }
 
 
 
